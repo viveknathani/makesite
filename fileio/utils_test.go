@@ -6,7 +6,7 @@ import (
 	"testing"
 )
 
-// TestExtractName will run a bunch of test cases for the function: extractName
+// TestExtractName will run a bunch of test cases for the function: ExtractName
 func TestExtractName(t *testing.T) {
 
 	testCases := []struct {
@@ -20,7 +20,7 @@ func TestExtractName(t *testing.T) {
 
 	for _, testCase := range testCases {
 
-		got := extractName(testCase.input)
+		got := ExtractName(testCase.input)
 		if got != testCase.expected {
 			log.Fatalf("Input: %s, Expected: %s, Got: %s", testCase.input, testCase.expected, got)
 		}

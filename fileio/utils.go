@@ -5,9 +5,9 @@ import "os"
 const permissionRWRR = 0644
 const permissionRWXRXRX = 0755
 
-// extractName will get you the name of the file or the directory from the given
+// ExtractName will get you the name of the file or the directory from the given
 // variable 'path'
-func extractName(path string) string {
+func ExtractName(path string) string {
 
 	arr := make([]rune, 0)
 	length := len(path)
