@@ -5,7 +5,7 @@ makesite is an experimental, site generator tool. It will take markdown files as
 ## description of packages 
 
 - converter: everything related to generating HTML from Markdown 
-- file: everything related to doing file I/O in this application 
+- fileio: everything related to doing file I/O in this application 
 - meta: everything about parsing metadata from the `.md` files 
  
 Over here, `metadata` includes information for `<meta>` tags, inner text for `<head>` and `<title>` tags, path to the CSS file to be used.
