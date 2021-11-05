@@ -8,7 +8,13 @@ makesite is an experimental, site generator tool. It will take markdown files as
 - fileio: everything related to doing file I/O in this application 
 - meta: everything about parsing metadata from the `.md` files 
  
-Over here, `metadata` includes information for `<meta>` tags, inner text for `<head>` and `<title>` tags, path to the CSS file to be used.
+Here is an example of writing metadata that will be parsed by the program.
+```
+[meta]: # (CSS_URL=./theme.css)
+[meta]: # (DOCUMENT_TITLE=title)
+
+```
+This should be present at the beginning of your document.
 
 ## license
 
