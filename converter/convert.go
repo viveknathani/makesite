@@ -8,6 +8,7 @@ import (
 
 	"github.com/russross/blackfriday/v2"
 	"github.com/viveknathani/makesite/fileio"
+	"github.com/viveknathani/makesite/meta"
 )
 
 func isMarkdown(source string) bool {
@@ -51,6 +52,7 @@ func ToHTMLIfDoable(source string) ([]byte, string) {
 	if err != nil {
 		log.Fatal(err)
 	}
+	defer file.Close()
 
 	stream, err := ioutil.ReadAll(file)
 	if err != nil {
@@ -60,7 +62,10 @@ func ToHTMLIfDoable(source string) ([]byte, string) {
 	name := fileio.ExtractName(source)
 	if isMarkdown(source) {
 
+		m := meta.ExtractMeta(source)
 		params := blackfriday.HTMLRendererParameters{
+			CSS:   m.CSS_URL,
+			Title: m.DOCUMENT_TITLE,
 			Flags: blackfriday.CompletePage,
 		}
 		renderer := blackfriday.NewHTMLRenderer(params)
