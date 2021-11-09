@@ -73,8 +73,8 @@ func TestMakeDirectory(t *testing.T) {
 // TestGetDirectoryListing will test the function: getDirectoryListing
 func TestGetDirectoryListing(t *testing.T) {
 
-	sample := []string{".git", ".gitignore", "LICENSE", "Makefile", "README.md", "bin", "converter", "fileio", "go.mod", "main.go", "meta"}
-	result := getDirectoryListing("../")
+	sample := []string{"error.go", "traverse.go", "utils.go", "utils_test.go"}
+	result := getDirectoryListing("./")
 
 	if len(sample) != len(result) {
 		log.Fatal(result)
@@ -85,7 +85,7 @@ func TestGetDirectoryListing(t *testing.T) {
 	for i < len(sample) && j < len(result) {
 
 		if sample[i] != result[j] {
-			log.Fatal("Dir listing is incorrect")
+			log.Fatal("Dir listing is incorrect: ", result)
 		}
 		i++
 		j++
