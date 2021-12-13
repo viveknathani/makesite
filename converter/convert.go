@@ -69,7 +69,7 @@ func ToHTMLIfDoable(source string) ([]byte, string) {
 			Flags: blackfriday.CompletePage,
 		}
 		renderer := blackfriday.NewHTMLRenderer(params)
-		return blackfriday.Run(stream, blackfriday.WithRenderer(renderer)), updateExtension(name)
+		return meta.AddViewPort(blackfriday.Run(stream, blackfriday.WithRenderer(renderer))), updateExtension(name)
 	}
 
 	return stream, name

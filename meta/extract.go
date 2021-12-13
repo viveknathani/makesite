@@ -75,3 +75,32 @@ func ExtractMeta(source string) *MakeSiteMeta {
 	}
 	return m
 }
+
+// AddViewPort will add a meta tag with name viewport
+// to facilitate better viewing on mobile phones
+func AddViewPort(input []byte) []byte {
+
+	const keyword = "</title>"
+	stream := string(input)
+	idx := strings.Index(stream, keyword)
+	if idx == -1 {
+		log.Fatal("Failed to add meta viewport")
+	}
+	end := idx + len(keyword) - 1
+	arr := make([]byte, 0)
+	for i := 0; i <= end; i++ {
+		arr = append(arr, byte(stream[i]))
+	}
+
+	content := `<meta name="viewport" content="width=device-width, initial-scale=1">`
+
+	for i := 0; i < len(content); i++ {
+		arr = append(arr, byte(content[i]))
+	}
+
+	for i := end + 1; i < len(stream); i++ {
+		arr = append(arr, byte(stream[i]))
+	}
+
+	return arr
+}
