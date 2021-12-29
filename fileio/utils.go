@@ -1,6 +1,9 @@
 package fileio
 
-import "os"
+import (
+	"os"
+	"strings"
+)
 
 const permissionRWRR = 0644
 const permissionRWXRXRX = 0755
@@ -80,4 +83,37 @@ func appendSeparator(source string) string {
 		source += "/"
 	}
 	return source
+}
+
+func isMarkdown(source string) bool {
+
+	return strings.HasSuffix(source, ".md") || strings.HasSuffix(source, ".md/")
+}
+
+func updateExtension(name string) string {
+
+	arr := make([]rune, 0)
+	arr = append(arr, rune('l'))
+	arr = append(arr, rune('m'))
+	arr = append(arr, rune('t'))
+	arr = append(arr, rune('h'))
+
+	length := len(name)
+
+	copy := false
+	for i := length - 1; i >= 0; i-- {
+
+		if name[i] == '.' && i != length-1 {
+			copy = true
+		}
+		if copy {
+			arr = append(arr, rune(name[i]))
+		}
+	}
+
+	for i := 0; i < len(arr)/2; i++ {
+		arr[i], arr[len(arr)-i-1] = arr[len(arr)-i-1], arr[i]
+	}
+
+	return string(arr)
 }
