@@ -3,8 +3,8 @@ package main
 import (
 	"os"
 
-	"github.com/viveknathani/makesite/converter"
 	"github.com/viveknathani/makesite/fileio"
+	"github.com/viveknathani/makesite/processor"
 )
 
 func main() {
@@ -16,5 +16,5 @@ func main() {
 
 	source := os.Args[1]
 	destination := os.Args[2]
-	fileio.TraverseAndRun(source, destination, converter.ToHTMLIfDoable)
+	fileio.TraverseAndRun(source, destination, processor.ConvertMarkdownToHTML)
 }
